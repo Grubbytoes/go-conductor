@@ -8,7 +8,7 @@
 script = ExtResource("1_n0vd8")
 
 [node name="character" parent="." instance=ExtResource("1_gm87f")]
-position = Vector2(160, 128)
+position = Vector2(160, 144)
 
 [node name="tileset" parent="." instance=ExtResource("2_ekavm")]
 layer_0/tile_data = PackedInt32Array(589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0)

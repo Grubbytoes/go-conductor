@@ -1,32 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://df4nu4h46sq6t"]
+[gd_scene load_steps=7 format=3 uid="uid://df4nu4h46sq6t"]
 
 [ext_resource type="PackedScene" uid="uid://dlbdcva0yif5i" path="res://goConductor/scenes/Conductor.tscn" id="1_1pw2s"]
 [ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_wr0bk"]
 [ext_resource type="PackedScene" uid="uid://bvl26xwqon16r" path="res://goConductor/scenes/SimpleTrackPlayer.tscn" id="2_nyvc6"]
-[ext_resource type="AudioStream" uid="uid://diguumlbcwm6e" path="res://imports/music/bass-1.mp3" id="4_v7t36"]
-[ext_resource type="AudioStream" uid="uid://decd6hqbxs2s7" path="res://imports/music/pad.mp3" id="5_s3ns2"]
+[ext_resource type="AudioStream" uid="uid://d25g3inmx7pg5" path="res://imports/music/tangerine-i-backing.mp3" id="4_tu3y1"]
+[ext_resource type="AudioStream" uid="uid://of5ni846qd6l" path="res://imports/music/tangerine-i-melody.mp3" id="5_dy05w"]
+[ext_resource type="AudioStream" uid="uid://dr2rarbrhcjac" path="res://imports/music/Spinning out.wav" id="5_var7l"]
 
 [node name="MusicPlayer" type="Node"]
 script = ExtResource("1_wr0bk")
 
-[node name="tangerineK2" parent="." instance=ExtResource("1_1pw2s")]
+[node name="tangerine-I" parent="." node_paths=PackedStringArray("lead") instance=ExtResource("1_1pw2s")]
+lead = NodePath("backing")
 meter = 10
 
-[node name="bass" parent="tangerineK2" instance=ExtResource("2_nyvc6")]
-loop = true
-loop_tail = 10
-bpm = 180
-meter = 5
+[node name="backing" parent="tangerine-I" instance=ExtResource("2_nyvc6")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerineK2/bass"]
-stream = ExtResource("4_v7t36")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerine-I/backing"]
+stream = ExtResource("4_tu3y1")
 
-[node name="pad" parent="tangerineK2" instance=ExtResource("2_nyvc6")]
-loop = true
-loop_tail = 10
-bpm = 180
-meter = 5
+[node name="melody" parent="tangerine-I" instance=ExtResource("2_nyvc6")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerineK2/pad"]
-stream = ExtResource("5_s3ns2")
-volume_db = 6.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerine-I/melody"]
+stream = ExtResource("5_dy05w")
+
+[node name="spinningOut" parent="." node_paths=PackedStringArray("lead") instance=ExtResource("1_1pw2s")]
+lead = NodePath(".")
+
+[node name="SimpleTrackPlayer" parent="spinningOut" instance=ExtResource("2_nyvc6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spinningOut/SimpleTrackPlayer"]
+stream = ExtResource("5_var7l")

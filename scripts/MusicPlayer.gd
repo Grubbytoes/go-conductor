@@ -1,9 +1,11 @@
 extends Node
 
-@onready var AUDIO_IDS = {
-	"tangerineK2": $tangerineK2
-}
+var audio_ids = {}
+
+func _ready():
+	for child in get_children():
+		audio_ids[child.name] = child
 
 # Plays the node of the given id
 func play(id):
-	AUDIO_IDS[id].play()
+	audio_ids[id].play()
