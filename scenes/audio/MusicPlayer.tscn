@@ -24,10 +24,7 @@ stream = ExtResource("4_tu3y1")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerine-I/melody"]
 stream = ExtResource("5_dy05w")
 
-[node name="spinningOut" parent="." node_paths=PackedStringArray("lead") instance=ExtResource("1_1pw2s")]
-lead = NodePath(".")
+[node name="spinning out" parent="." instance=ExtResource("2_nyvc6")]
 
-[node name="SimpleTrackPlayer" parent="spinningOut" instance=ExtResource("2_nyvc6")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spinningOut/SimpleTrackPlayer"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spinning out"]
 stream = ExtResource("5_var7l")
