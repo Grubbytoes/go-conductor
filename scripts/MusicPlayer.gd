@@ -15,17 +15,22 @@ func play(id):
 	track.play()
 	currently_playing = track
 
-func fade_to(id):
+func stop(id):
+	var track = audio_ids[id]
+	track.stop()
+
+func fade_to(id, duration):
 	# Create a new bus which is sent to the original
 	# Set the new tracks to the original 
 	AudioServer.add_bus()
 	var i = AudioServer.bus_count-1
 	var original_bus = currently_playing.get_bus()
 	var new_bus = AudioServer.get_bus_name(AudioServer.bus_count-1)
+	var original_track = currently_playing
 	var new_track = audio_ids[id]
 	AudioServer.set_bus_send(i, original_bus)
 	
-	# Redirect the old tracks to the new bus
+	# Start the new track
 	currently_playing.set_bus(new_bus)
 	
 	# Add an amp effect to fade out the new bus
@@ -34,7 +39,11 @@ func fade_to(id):
 	
 	# begin tweening 
 	var fade_tween = get_tree().create_tween()
-	fade_tween.tween_property(amp, "volume_db", -30, 5).as_relative()
+	fade_tween.tween_property(amp, "volume_db", -30, duration).as_relative()
+	fade_tween.tween_callback(original_track.stop)
+	fade_tween.tween_callback(AudioServer.set_bus_mute.bind(i, true)).set_delay(1)
+	fade_tween.tween_callback(AudioServer.remove_bus.bind(i)).set_delay(1)
 	fade_tween.play()
 	
-	pass
+
+
