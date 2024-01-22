@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://df4nu4h46sq6t"]
+
+[ext_resource type="PackedScene" uid="uid://dlbdcva0yif5i" path="res://goConductor/scenes/Conductor.tscn" id="1_1pw2s"]
+[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_wr0bk"]
+[ext_resource type="PackedScene" uid="uid://bvl26xwqon16r" path="res://goConductor/scenes/SimpleTrackPlayer.tscn" id="2_nyvc6"]
+[ext_resource type="AudioStream" uid="uid://diguumlbcwm6e" path="res://imports/music/bass-1.mp3" id="4_v7t36"]
+[ext_resource type="AudioStream" uid="uid://decd6hqbxs2s7" path="res://imports/music/pad.mp3" id="5_s3ns2"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_wr0bk")
+
+[node name="tangerineK2" parent="." instance=ExtResource("1_1pw2s")]
+meter = 10
+
+[node name="bass" parent="tangerineK2" instance=ExtResource("2_nyvc6")]
+loop = true
+loop_tail = 10
+bpm = 180
+meter = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerineK2/bass"]
+stream = ExtResource("4_v7t36")
+
+[node name="pad" parent="tangerineK2" instance=ExtResource("2_nyvc6")]
+loop = true
+loop_tail = 10
+bpm = 180
+meter = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="tangerineK2/pad"]
+stream = ExtResource("5_s3ns2")
+volume_db = 6.0

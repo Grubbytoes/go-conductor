@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsv0ynign8c8v"]
+
+[ext_resource type="Script" path="res://goConductor/scripts/Conductor.gd" id="1_fi2wk"]
+[ext_resource type="PackedScene" uid="uid://dlbdcva0yif5i" path="res://goConductor/scenes/Conductor.tscn" id="2_vqwj7"]
+
+[node name="song_demonstrable" type="Node"]
+script = ExtResource("1_fi2wk")
+
+[node name="Conductor" parent="." instance=ExtResource("2_vqwj7")]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsi8ht4b1vmbw"]
+
+[ext_resource type="PackedScene" uid="uid://biy4vq3frpygl" path="res://scenes/character.tscn" id="1_gm87f"]
+[ext_resource type="Script" path="res://scripts/level0.gd" id="1_n0vd8"]
+[ext_resource type="PackedScene" uid="uid://bto66lpswcho0" path="res://scenes/tileset.tscn" id="2_ekavm"]
+
+[node name="level0" type="Node2D"]
+script = ExtResource("1_n0vd8")
+
+[node name="character" parent="." instance=ExtResource("1_gm87f")]
+position = Vector2(160, 128)
+
+[node name="tileset" parent="." instance=ExtResource("2_ekavm")]
+layer_0/tile_data = PackedInt32Array(589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0)
