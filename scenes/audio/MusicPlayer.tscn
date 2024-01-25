@@ -1,18 +1,18 @@
 [gd_scene load_steps=7 format=3 uid="uid://df4nu4h46sq6t"]
 
 [ext_resource type="PackedScene" uid="uid://dlbdcva0yif5i" path="res://goConductor/scenes/Conductor.tscn" id="1_1pw2s"]
-[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_wr0bk"]
+[ext_resource type="Script" path="res://goConductor/scripts/MusicSwitch.gd" id="1_3g1ad"]
 [ext_resource type="PackedScene" uid="uid://bvl26xwqon16r" path="res://goConductor/scenes/SimpleTrackPlayer.tscn" id="2_nyvc6"]
 [ext_resource type="AudioStream" uid="uid://d25g3inmx7pg5" path="res://imports/music/tangerine-i-backing.mp3" id="4_tu3y1"]
 [ext_resource type="AudioStream" uid="uid://of5ni846qd6l" path="res://imports/music/tangerine-i-melody.mp3" id="5_dy05w"]
 [ext_resource type="AudioStream" uid="uid://dr2rarbrhcjac" path="res://imports/music/Spinning out.wav" id="5_var7l"]
 
 [node name="MusicPlayer" type="Node"]
-script = ExtResource("1_wr0bk")
+script = ExtResource("1_3g1ad")
+transition_time = 3.0
 
 [node name="tangerine-I" parent="." node_paths=PackedStringArray("lead") instance=ExtResource("1_1pw2s")]
 lead = NodePath("backing")
-meter = 10
 
 [node name="backing" parent="tangerine-I" instance=ExtResource("2_nyvc6")]
 
@@ -28,3 +28,4 @@ stream = ExtResource("5_dy05w")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="spinning out"]
 stream = ExtResource("5_var7l")
+volume_db = -3.0

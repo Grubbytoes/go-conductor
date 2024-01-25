@@ -1,3 +1,4 @@
+class_name Switch
 extends Node
 
 var audio_ids = {}

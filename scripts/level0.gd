@@ -2,8 +2,9 @@ extends Node2D
 
 
 func _ready():
-	MusicPlayer.play("tangerine-I")
+	MusicPlayer.switch_to("tangerine-I")
+	MusicPlayer.play()
 
 
 func _on_button_pressed():
-	MusicPlayer.fade_to("spinning out", 4)
+	MusicPlayer.switch_to("spinning out")
